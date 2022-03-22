@@ -1,6 +1,7 @@
 import { createComment, createCommentInput, getCommentText } from './utils.js';
 
 const commentsContainer = document.querySelector('.comments_container');
+// Default comment element
 const commentElement = createComment(
   'Do you like this blog...?',
   new Date().getTime()
