@@ -15,6 +15,7 @@ const commentsContainer = document.querySelector('.comments_container');
 // defautl comment text
 const defaultComment = 'Do you like this blog...?';
 const commentElement = createComment(defaultComment, createUniqueID());
+
 commentsContainer.appendChild(commentElement);
 
 commentsContainer.addEventListener('click', (event) => {
