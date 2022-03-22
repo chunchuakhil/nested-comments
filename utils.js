@@ -39,9 +39,10 @@ export const createComment = (text, id) => {
   commentElement.appendChild(commentText);
 
   // create add comment button
-  const addCommentBtn = document.createElement('button');
+  const addCommentBtn = document.createElement('p');
   addCommentBtn.innerText = 'Add a reply';
   addCommentBtn.setAttribute('id', `${id}_add_comment_btn`);
+  addCommentBtn.setAttribute('class', 'add_btn');
   commentElement.appendChild(addCommentBtn);
 
   return commentElement;
@@ -73,4 +74,9 @@ export const createCommentInput = (id) => {
   commentInputContainer.appendChild(submitCommentBtn);
 
   return commentInputContainer;
+};
+
+export const findInputAndFocus = (id) => {
+  const inputElement = document.getElementById(`${id}_input`);
+  inputElement.focus();
 };

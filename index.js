@@ -8,6 +8,7 @@ import {
   createCommentInput,
   createUniqueID,
   getIdNumberFromId,
+  findInputAndFocus,
 } from './utils.js';
 
 const commentsContainer = document.querySelector('.comments_container');
@@ -23,8 +24,10 @@ commentsContainer.addEventListener('click', (event) => {
   const parent = document.getElementById(event.target.id).parentElement;
 
   if (checkIdType(event.target.id) === 'add') {
-    const inputContainer = createCommentInput(createUniqueID());
+    const id = createUniqueID();
+    const inputContainer = createCommentInput(id);
     parent.appendChild(inputContainer);
+    findInputAndFocus(id);
   } else if (checkIdType(event.target.id) === 'submit') {
     const id = getIdNumberFromId(event.target.id);
     const { value } = document.getElementById(`${id}_input`);

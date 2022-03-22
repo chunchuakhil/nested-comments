@@ -10,5 +10,17 @@ input {
   display: block;
 }
 input {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  outline: none;
+}
+button {
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+}
+.add_btn {
+  color: blue;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
