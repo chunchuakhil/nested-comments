@@ -1,24 +1,35 @@
-import { createComment, createCommentInput, getCommentText } from './utils.js';
+/* eslint-disable comma-dangle */
+/* eslint-disable no-undef */
+/* eslint no-undef: "error" */
+
+import {
+  checkIdType,
+  createComment,
+  createCommentInput,
+  createUniqueID,
+  getIdNumberFromId,
+} from './utils.js';
 
 const commentsContainer = document.querySelector('.comments_container');
-const commentElement = createComment(
-  'Do you like this blog...?',
-  new Date().getTime()
-);
+
+// defautl comment text
+const defaultComment = 'Do you like this blog...?';
+const commentElement = createComment(defaultComment, createUniqueID());
 commentsContainer.appendChild(commentElement);
 
 commentsContainer.addEventListener('click', (event) => {
-  // always have reference to parent element
+  // parent element reference
   const parent = document.getElementById(event.target.id).parentElement;
-  if (event.target.id.split('_')[1] === 'add') {
-    // first create a div with input, submit button and add to parent
-    const inputContainer = createCommentInput(new Date().getTime());
-    // append to parent
+
+  if (checkIdType(event.target.id) === 'add') {
+    // creates input text
+    const inputContainer = createCommentInput(createUniqueID());
     parent.appendChild(inputContainer);
-  } else if (event.target.id.split('_')[1] === 'submit') {
-    // if on click submit get value from input and replace input with comment container
-    const commentText = getCommentText(event);
-    const commentContainer = createComment(commentText, new Date().getTime());
+  } else if (checkIdType(event.target.id) === 'submit') {
+    // replace input with comment text
+    const id = getIdNumberFromId(event.target.id);
+    const { value } = document.getElementById(`${id}_input`);
+    const commentContainer = createComment(value, createUniqueID());
     parent.replaceWith(commentContainer);
   }
 });
