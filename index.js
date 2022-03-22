@@ -22,11 +22,9 @@ commentsContainer.addEventListener('click', (event) => {
   const parent = document.getElementById(event.target.id).parentElement;
 
   if (checkIdType(event.target.id) === 'add') {
-    // creates input text
     const inputContainer = createCommentInput(createUniqueID());
     parent.appendChild(inputContainer);
   } else if (checkIdType(event.target.id) === 'submit') {
-    // replace input with comment text
     const id = getIdNumberFromId(event.target.id);
     const { value } = document.getElementById(`${id}_input`);
     const commentContainer = createComment(value, createUniqueID());
